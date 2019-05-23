@@ -9,15 +9,16 @@ class Todo extends Component {
         this.state = { newTodo: '', todos: [] };
 
         this.addTodo = this.addTodo.bind(this);
+        this.todoDone = this.todoDone.bind(this);
         this.writingTodo = this.writingTodo.bind(this);
     }
 
     componentDidMount() {
         this.setState({
             todos: [ 
-                { key: 1, todo: "Study React JS", done: false },
-                { key: 2, todo: "Go to the GYM", done: true },
-                { key: 3, todo: "Save money", done: false }
+                { key: Date.now(), todo: "Study React JS", done: false },
+                { key: Date.now() + 1, todo: "Go to the GYM", done: true },
+                { key: Date.now() + 2, todo: "Save money", done: false }
             ]
         });
     }
@@ -37,6 +38,10 @@ class Todo extends Component {
         }
     }
 
+    todoDone(key, value) {
+
+    }
+
     writingTodo(value) {
         this.setState({ newTodo: value });
     }
@@ -46,7 +51,10 @@ class Todo extends Component {
             <div className="Todo">
                 <h1>Todo List</h1>
                 <TodoList todos={ this.state.todos } />
-                <TodoForm newTodo={ this.state.newTodo } writingTodo={ this.writingTodo } addTodo={ this.addTodo } />
+                <TodoForm addTodo={ this.addTodo } 
+                            newTodo={ this.state.newTodo } 
+                            todoDone={ this.todoDone }
+                            writingTodo={ this.writingTodo }  />
             </div>
         );
     }
