@@ -1,5 +1,5 @@
 .App {
-  
+
 }
 
 .Todo {
@@ -11,7 +11,11 @@
 }
 
 .TodoList {
-  
+
+}
+
+.TodoList .todo-done {
+    text-decoration: line-through;
 }
 
 .TodoForm {
