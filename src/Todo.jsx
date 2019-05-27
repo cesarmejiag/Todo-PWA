@@ -73,7 +73,9 @@ class Todo extends Component {
                 <h1>Todo List</h1>
                 <TodoTools todos={ this.state.todos } />
                 <TodoList todos={ this.state.todos } todoDone={ this.todoDone } />
-                <TodoForm newTodo={ this.state.newTodo } writingTodo={ this.writingTodo } addTodo={ this.addTodo } />
+                <TodoForm addTodo={ this.addTodo } 
+                        newTodo={ this.state.newTodo } 
+                        writingTodo={ this.writingTodo } />
             </div>
         );
     }
