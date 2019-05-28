@@ -10,6 +10,7 @@ class Todo extends Component {
         this.state = { newTodo: '', todos: [] };
 
         this.addTodo = this.addTodo.bind(this);
+        this.archive = this.archive.bind(this);
         this.todoDone = this.todoDone.bind(this);
         this.writingTodo = this.writingTodo.bind(this);
     }
@@ -43,6 +44,15 @@ class Todo extends Component {
     }
 
     /**
+     * Archive done todos.
+     */
+    archive() {
+        this.setState(prevState => ({
+            todos: prevState.todos.filter(todo => !todo.done)
+        }));
+    }
+
+    /**
      * Handles todo state.
      * @param {string} key
      * @param {boolean} done 
@@ -67,15 +77,16 @@ class Todo extends Component {
         this.setState({ newTodo: value });
     }
 
+    /**
+     * Render component into DOM.
+     */
     render() {
         return (
             <div className="Todo">
                 <h1>Todo List</h1>
-                <TodoTools todos={ this.state.todos } />
+                <TodoTools todos={ this.state.todos } archive={ this.archive } />
                 <TodoList todos={ this.state.todos } todoDone={ this.todoDone } />
-                <TodoForm addTodo={ this.addTodo } 
-                        newTodo={ this.state.newTodo } 
-                        writingTodo={ this.writingTodo } />
+                <TodoForm addTodo={ this.addTodo } newTodo={ this.state.newTodo } writingTodo={ this.writingTodo } />
             </div>
         );
     }

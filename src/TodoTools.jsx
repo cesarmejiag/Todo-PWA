@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 
 class TodoTools extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.archive = this.archive.bind(this);
+    }
+
+    archive() {
+        this.props.archive();
+    }
+    
     countTodosDone() {
         const todosDone = this.props.todos.filter(todo => todo.done);
 
@@ -14,7 +24,7 @@ class TodoTools extends Component {
 
         return (
             <div className="TodoTools">
-                <div>{ done } of { total } remaining [ <button>archive</button> ]</div>
+                <div>{ done } of { total } remaining [ <button onClick={ this.archive }>archive</button> ]</div>
             </div>
         );
     }
